@@ -1,0 +1,3 @@
+{{ request.user.username }}
+
+Just checking that all is well you know. It is cool sometimes to work on things like this.

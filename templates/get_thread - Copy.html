@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+<div class="container ">
+{% block content %}
+<div class="get-thread">
+<li>
+{{ thread.topic }}  <span class="thread-post-username"><a href="{% url 'forum.views.user_page' thread.user.username %}">posted by {{ thread.user }}</a></span></li>
+
+
+<li>
+{{ thread.main_post }}<li>
+  {% if user.is_authenticated %}
+<ul class="post-mini-nav">
+
+  {% if request.user.username == thread.user.username %}
+<li>
+<a href="{% url 'forum.views.edit_thread' thread.pk %}">edit</a>
+</li>
+{% endif %}
+{% if request.user.username == thread.user.username %}
+<li>
+<a href="{% url 'forum.views.delete_thread' thread.pk %}">delete</a></li>
+{% endif %}
+<li>
+<a href="{% url 'forum.views.quote_thread' thread.pk %}">quote</a></li>
+</ul>
+{% endif %}
+<ul class="post-list">
+{% if posts %}
+{% for post in posts %}
+<ul class="single-post">
+<li>{{ post.post }}<li>
+  <li id="post-author-li"> by <a href="{% url 'forum.views.user_page' post.user.username %}" id="post-author-username">
+    {{ post.user.username }}</a></li>
+  </ul>
+{% endfor %}
+{% endif %}
+</ul>
+</div>
+{% if user.is_authenticated %}
+<form class="post-form" action="{% url 'forum.views.add_post' thread.pk %}" method="POST">
+{% csrf_token %}
+{{ new_post_form.as_p }}
+<input type="submit" value="Post">
+</form>
+{% endif %}
+</div>
+
+{% endblock %}
+
+</html>

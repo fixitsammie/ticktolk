@@ -1,0 +1,29 @@
+<html>
+<title>ticktolk</title>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/normalize.css">
+
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/desktop.css">
+{% block external %}
+{% endblock %}
+
+<div class="header">
+	<a href="/"><h1>ticktolk</h1></a>
+	</div>
+	
+<div class="container">
+	{% block heading %}
+
+	{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+	{% endblock %}
+	{% block content %}
+
+{% endblock %}
+
+</div>
+</html>

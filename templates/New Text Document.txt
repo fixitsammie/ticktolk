@@ -1,0 +1,12 @@
+{% if your_name %}
+	<p> With all the love in the world by {{ friend }}</p>
+	{% endif %}
+	<div>
+	<p>Send a greeting to your friend</p>
+		<form action="/new-year/" method="post">
+    {% csrf_token %}
+<p><label for="id_your_name">Your name:</label> <input id="id_your_name" maxlength="100" name="your_name" type="text" required/></p>
+
+<p><label for="id_friend_name">Your friend&#39;s name:</label> <input id="id_friend_name" maxlength="100" name="friend_name" type="text" /></p>
+    <input type="submit" value="OK">
+</form>

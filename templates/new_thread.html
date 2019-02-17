@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {{ category }}
+<form enctype="multipart/form-data" action="." method="POST" class="new-thread" >
+	 {% csrf_token %}
+    {{ field.errors }}
+{{ form.as_p }}
+<input type="submit" value="Create new topic">
+</form>
+
+
+{% endblock %}

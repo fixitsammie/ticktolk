@@ -1,0 +1,24 @@
+*,a{
+	text-decoration:none;
+}
+.container{
+	width:98%;
+	margin-right:auto;
+	margin-left:auto;
+}
+.container img{
+	width:100%;
+	margin-bottom: 20px;
+	text-align: center;
+
+	margin-right:auto;
+	margin-left:auto;
+}
+
+footer{
+	width:100%;
+	height:60px;
+	background-color: #ccc;
+	text-align: center;
+	padding-top: 10px;
+}

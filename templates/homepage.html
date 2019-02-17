@@ -1,0 +1,66 @@
+<html>
+<title>ticktolk</title>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/normalize.css">
+
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/desktop.css">
+
+<div class="container">
+<div class="header">
+  <a href="/"><h1>ticktolk</h1></a>
+
+
+<ul class="user-nav">
+  {% if user.is_authenticated %}
+<li> Logged in as  <b><a href="{% url 'forum.views.user_page' user.username %}">{{ user.username }}</a></b></li>
+    <li><a href="/logout">Logout</a></li>
+
+    {% else %}
+<li>Welcome  <b>Guest!</b></li>
+    <li><a href="/login">Login</a></li>
+
+        <li><a href="/register">Register</a></li>
+
+{% endif %}
+  </ul>
+  </div>
+
+  {% if messages %}
+
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<ul class="category-list">
+  
+{% for category in categories %}
+<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li> 
+{% endfor %}
+</ul>
+<br/>
+<ul class="threads-list">
+
+{% if threads %}
+
+{% for thread in threads %}
+<a href="{{ thread.get_absolute_url }}"><li>{{ thread.topic }}</li></a>
+{% endfor %}
+{% endif %}
+</ul>
+
+
+  <form action="/search/" method="GET" id="search-form">
+
+    <input id="id_q" name="q" type="text" required/>
+
+  <input type="submit" id="id_submit" value="search">
+  </form>
+
+
+
+</div>
+
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="." method="GET">
+
+<input type="search" name="q" required autofocus value="{{query}}"></input>
+<input type="submit" value="search">
+</form>
+
+<h3>Search Result</h3>
+{% if results %}
+{% for result in results %}
+{{ result.topic }}  {{result.pk}}
+
+<a href="{% url 'forum.views.get_thread' result.slug %}"><li>{{ result.topic }}</li></a>
+{% endfor %}
+{% else %}
+<p> No result for the given query</p>
+{% endif %}
+{% endblock %}

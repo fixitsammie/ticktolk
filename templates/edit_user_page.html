@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+document.gettElementByName('username').onkeydown=function(e){
+  e.preventDefault();
+}
+</script>
+<li>  <a href="{% url 'forum.views.user_page' user.username %}">{{ user.username }}</a></li>
+{{ user}}
+
+
+<form enctype="multipart/form-data" action="." method="POST" >
+
+  {% csrf_token %}
+  <p>
+Username  <input type="text" value={{ user.username}}  name="username" readonly></p>
+<p>First name  <input type="text"  name="first_name" placeholder="{{ user.first_name}}"></input></p>
+<p>
+  Last name <input type="text"  name="last_name" placeholder="{{ user.last_name}}">  </p>
+<p>
+  Email <input type="email"  name="email" placeholder="{{ user.email }}"></p>
+
+<p><input type="file" name="dp"></p>
+<input type="submit" value="Update">
+</form>
+{% endblock %}

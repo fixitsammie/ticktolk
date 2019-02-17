@@ -1,0 +1,10 @@
+Django==1.7.1
+
+markdown
+
+django-tinymce
+
+Pillow
+
+django-password-reset
+

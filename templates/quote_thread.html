@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+<div class="container ">
+{% block content %}
+{{ thread }}
+
+<p>
+{{ quoted_text }}
+</p>
+<form action="." method="POST">
+	 {% csrf_token %}
+{{ form.as_p }}
+<input type="submit">
+</form>
+
+
+
+{% endblock %}
+
+</div>
+
+</html>

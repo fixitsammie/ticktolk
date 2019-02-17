@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+<div class="container ">
+{% block content %}
+<h4>
+<a href="{% url 'forum.views.get_category' category.pk %}">{{ category.name }}</a></h4>
+
+<p>{{ category.description }}</p>
+
+<a href="{% url 'forum.views.new_thread' category.pk %}"><p id="create-new-topic">Create new topic</p></a>
+
+<h3>TOPICS</h3>  
+{% if threads %}
+
+{% for thread in threads %}
+<a href="{% url 'forum.views.get_thread' thread.pk %}"><li>{{ thread.topic }}</li></a>
+{% endfor %}
+
+{% else %}
+<p>No topic yet. Be the first to create a topic.</p>
+{% endif %}
+{% endblock %}
+
+</div>
+
+</html>

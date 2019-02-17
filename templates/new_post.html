@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {{ category }}
+<form action="." method="POST">
+	 {% csrf_token %}
+    {{ field.errors }}
+{{ form.as_p }}
+<input type="submit">
+</form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% block external %}
+
+<link href="{{ STATIC_URL }}css/signin.css" rel="stylesheet">
+
+    {% endblock %}
+
+{% block content %}
+    {% if form.errors %}
+
+      <div class="alert alert-danger">
+       <p>Your username and password didn't match.Please try again.</p>
+        {% if form.username.errors %} <p class='error'>{{form.username.errors}}</p>{% endif %}
+     </div>
+    {% endif %}
+
+
+      <form method="post" action="." class="form-signin">
+        {% csrf_token %}
+<p><label for="id_username">Username:</label> </p>
+<p><input id="id_username" name="username" type="text" class="form-control"  autofocus required/></p>
+<p><label for="id_password">Password:</label></p>
+<p><input id="id_password" name="password" type="password" class="form-control"  required /></p>
+
+<input type="submit" value="Sign in"/>
+
+       
+  <div class="password-reset-link">
+    <a href="{% url 'password_reset_recover' %}">{% trans 'Forgotten password?' %}</a>
+  </div>
+{% endblock %}
